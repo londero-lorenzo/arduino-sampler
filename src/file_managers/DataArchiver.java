@@ -79,9 +79,11 @@ public class DataArchiver {
      * @param listHandler interfaccia che fa riferimento a {@link ListHandler}
      */
     public DataArchiver(String path, String fileName, ListHandler listHandler) {
+        Path folderDataPath = Paths.get(path);
         Path data_path = Paths.get(path, fileName);
         File data_file = data_path.toFile();
         try {
+            folderDataPath.toFile().mkdirs();
             data_file.createNewFile();
             this.folderPath = path;
             this.fileName = fileName;
